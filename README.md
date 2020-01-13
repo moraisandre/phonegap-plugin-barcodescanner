@@ -9,7 +9,7 @@ To install this plugin please use the following comands
 
 Features changed:
 * Removed green retangle on iOS Scanner
-* Incresed red line width
+* Increased red line width
 
 iOS Barcode Scanner example:
 
