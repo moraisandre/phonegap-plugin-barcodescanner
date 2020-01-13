@@ -956,13 +956,15 @@ parentViewController:(UIViewController*)parentViewController
 #define RETICLE_WIDTH    10.0f
 #define RETICLE_OFFSET   60.0f
 #define RETICLE_ALPHA     0.4f
+#define LINE_SIZE    700.0f
+#define LINE_OFFSET    10.0f
 
 //-------------------------------------------------------------------------
-// builds the green box and red line
+// builds only the red line
 //-------------------------------------------------------------------------
 - (UIImage*)buildReticleImage {
     UIImage* result;
-    UIGraphicsBeginImageContext(CGSizeMake(RETICLE_SIZE, RETICLE_SIZE));
+    UIGraphicsBeginImageContext(CGSizeMake(LINE_SIZE, LINE_SIZE));
     CGContextRef context = UIGraphicsGetCurrentContext();
 
     if (self.processor.is1D) {
@@ -970,25 +972,25 @@ parentViewController:(UIViewController*)parentViewController
         CGContextSetStrokeColorWithColor(context, color.CGColor);
         CGContextSetLineWidth(context, RETICLE_WIDTH);
         CGContextBeginPath(context);
-        CGFloat lineOffset = (CGFloat) (RETICLE_OFFSET+(0.5*RETICLE_WIDTH));
-        CGContextMoveToPoint(context, lineOffset, RETICLE_SIZE/2);
-        CGContextAddLineToPoint(context, RETICLE_SIZE-lineOffset, (CGFloat) (0.5*RETICLE_SIZE));
+        CGFloat lineOffset = (CGFloat) (LINE_OFFSET+(0.5*RETICLE_WIDTH));
+        CGContextMoveToPoint(context, lineOffset, LINE_SIZE/2);
+        CGContextAddLineToPoint(context, LINE_SIZE-lineOffset, (CGFloat) (0.5*LINE_SIZE));
         CGContextStrokePath(context);
     }
 
-    if (self.processor.is2D) {
-        UIColor* color = [UIColor colorWithRed:0.0 green:1.0 blue:0.0 alpha:RETICLE_ALPHA];
-        CGContextSetStrokeColorWithColor(context, color.CGColor);
-        CGContextSetLineWidth(context, RETICLE_WIDTH);
-        CGContextStrokeRect(context,
-                            CGRectMake(
-                                       RETICLE_OFFSET,
-                                       RETICLE_OFFSET,
-                                       RETICLE_SIZE-2*RETICLE_OFFSET,
-                                       RETICLE_SIZE-2*RETICLE_OFFSET
-                                       )
-                            );
-    }
+//    if (self.processor.is2D) {
+//        UIColor* color = [UIColor colorWithRed:0.0 green:1.0 blue:0.0 alpha:RETICLE_ALPHA];
+//        CGContextSetStrokeColorWithColor(context, color.CGColor);
+//        CGContextSetLineWidth(context, RETICLE_WIDTH);
+//        CGContextStrokeRect(context,
+//                            CGRectMake(
+//                                       RETICLE_OFFSET,
+//                                       RETICLE_OFFSET,
+//                                       RETICLE_SIZE-2*RETICLE_OFFSET,
+//                                       RETICLE_SIZE-2*RETICLE_OFFSET
+//                                       )
+//                            );
+//    }
 
     result = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
