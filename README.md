@@ -1,3 +1,25 @@
+# Custom PhoneGap Plugin BarcodeScanner
+================================
+
+To install this plugin please use the following comands
+
+`ionic cordova plugin add https://github.com/moraisandre/phonegap-plugin-barcodescanner.git`
+
+`npm i moraisandre/phonegap-plugin-barcodescanner#master --save`
+
+Features changed:
+* Removed green retangle on iOS Scanner
+* Incresed red line width
+
+iOS Barcode Scanner example:
+
+
+<picture>
+<img src="NEW_BARCODE_IOS.PNG" width="750px">
+</br>
+<label>New look on iOS barcode scanner</label>
+</picture>
+    
 # PhoneGap Plugin BarcodeScanner
 ================================
 
